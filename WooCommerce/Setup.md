@@ -57,4 +57,9 @@ Setting up WooCommerce with Wordpress involves configuring a lot of settings. In
 
 ### Deal with HTTP / HTTPS Issues
 Since this project is purely for educational purposes, we apply this setting to ensure no issues with HTTPS
-- Open the file .htaccess located in <XAMPP Folder>/htdocs/<Wordpress project name>
+- Open the file .htaccess located in (XAMPP-folder)/htdocs/(Wordpress-project-name)
+- Add the following line at the end:
+    - SetEnvlf Authorization (.+) HTTPS=on
+
+### Setup WooCommerce Webhooks
+// To Be Continued
