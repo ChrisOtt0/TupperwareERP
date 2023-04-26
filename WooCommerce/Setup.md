@@ -49,3 +49,12 @@ Setting up WooCommerce with Wordpress involves configuring a lot of settings. In
     4. Tupperware4.jpg - Tupperware Container (Large) - 350 kr
     5. Tupperware5.jpg - Tupperware Container (Tiny) - 150 kr
     - Publish before exiting
+
+### Setup WooCommerce REST API
+- Go to WooCommerce -> Settings -> Advanced ->
+    - REST API -> Add Key (Remember to save both key and secret)
+    - Legacy API -> Enable the Legacy REST API
+
+### Deal with HTTP / HTTPS Issues
+Since this project is purely for educational purposes, we apply this setting to ensure no issues with HTTPS
+- Open the file .htaccess located in <XAMPP Folder>/htdocs/<Wordpress project name>
