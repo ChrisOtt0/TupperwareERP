@@ -62,4 +62,15 @@ Since this project is purely for educational purposes, we apply this setting to 
     - SetEnvlf Authorization (.+) HTTPS=on
 
 ### Setup WooCommerce Webhooks
-// To Be Continued
+Unfortunately Business Central does not work with native webhooks when running on premise. Thus we require some middleware.
+To ensure this works for development and testing purposes, we want to suppress suspicious URLs.
+- Add the following code to the functions.php file:
+```php
+function allow_unsafe_urls ( $args ) {
+	$args['reject_unsafe_urls'] = false;
+	return $args;
+};
+	
+add_filter( 'http_request_args', 'allow_unsafe_urls' );
+add_filter('https_ssl_verify', '__return_false');
+```
