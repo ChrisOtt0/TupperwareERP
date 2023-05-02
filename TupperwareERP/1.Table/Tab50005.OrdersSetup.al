@@ -2,7 +2,7 @@ table 50005 OrdersSetup
 {
     Caption = 'OrdersSetup';
     DataClassification = ToBeClassified;
-    
+
     fields
     {
         field(1; "Primary Key"; Code[10])
@@ -20,9 +20,9 @@ table 50005 OrdersSetup
             Caption = 'File Name';
             DataClassification = ToBeClassified;
         }
-        field(4; "Order No"; Code[20])
+        field(4; "Order Nos"; Code[20])
         {
-            Caption = 'Order No';
+            Caption = 'Order Nos';
             DataClassification = ToBeClassified;
         }
     }

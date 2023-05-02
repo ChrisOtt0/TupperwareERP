@@ -22,12 +22,6 @@ page 50008 OrdersSetup
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the File Name field.';
                 }
-                field("Order No"; Rec."Order No")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Order No field.';
-                    Editable = false;
-                }
             }
         }
     }
