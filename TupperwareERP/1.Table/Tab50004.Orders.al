@@ -26,24 +26,19 @@ table 50004 Orders
             DataClassification = ToBeClassified;
             OptionMembers = "Pending","Shipped","Invoiced","Cancelled";
         }
-        field(5; "Payment Method"; Option)
-        {
-            Caption = 'Payment Method';
-            DataClassification = ToBeClassified;
-            OptionMembers = "Mobile Pay";
-        }
-        field(6; "Shipping Method"; Option)
+        
+        field(5; "Shipping Method"; Option)
         {
             Caption = 'Shipping Method';
             DataClassification = ToBeClassified;
             OptionMembers = "PostNord","GLS","DAO","Bring";
         }
-        field(7; "Order Notes"; Text[100])
+        field(6; "Order Notes"; Text[100])
         {
             Caption = 'Order Notes';
             DataClassification = ToBeClassified;
         }
-        field(8; Product; Text[50])
+        field(7; Product; Text[50])
         {
             Caption = 'Product';
             DataClassification = ToBeClassified;

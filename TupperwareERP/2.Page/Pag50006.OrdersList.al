@@ -42,11 +42,7 @@ page 50006 OrdersList
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Shipping Method field.';
                 }
-                field("Payment Method"; Rec."Payment Method")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Payment Method field.';
-                }
+                
                 field("Order Status"; Rec."Order Status")
                 {
                     ApplicationArea = All;

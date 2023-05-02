@@ -43,11 +43,7 @@ page 50007 OrdersCard
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Order Date field.';
                 }
-                field("Payment Method"; Rec."Payment Method")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Payment Method field.';
-                }
+
                 field("Shipping Method"; Rec."Shipping Method")
                 {
                     ApplicationArea = All;
