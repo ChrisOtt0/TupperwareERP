@@ -43,11 +43,11 @@ Setting up WooCommerce with Wordpress involves configuring a lot of settings. In
 
 ### Setup WooCommerce Products
 - Go to Products -> Add New -> 
-    1. Tupperware1.jpg - Tupperware Container (Small) - 200 kr - Category: Container
-    2. Tupperware2.jpg - Tupperware Container (Extra Large) - 500 kr - Category: Container
-    3. Tupperware3.jpg - Tupperware Container (Medium) - 250 kr - Category: Container
-    4. Tupperware4.jpg - Tupperware Container (Large) - 350 kr - Category: Container
-    5. Tupperware5.jpg - Tupperware Container (Tiny) - 150 kr - Category: Container
+    1. Tupperware1.jpg - Tupperware Container (Small) - 200 kr - Category: Container - Manage Inventory
+    2. Tupperware2.jpg - Tupperware Container (Extra Large) - 500 kr - Category: Container - Manage Inventory
+    3. Tupperware3.jpg - Tupperware Container (Medium) - 250 kr - Category: Container - Manage Inventory
+    4. Tupperware4.jpg - Tupperware Container (Large) - 350 kr - Category: Container - Manage Inventory
+    5. Tupperware5.jpg - Tupperware Container (Tiny) - 150 kr - Category: Container - Manage Inventory
     - Publish before exiting
 
 ### Setup WooCommerce REST API
