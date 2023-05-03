@@ -74,3 +74,17 @@ function allow_unsafe_urls ( $args ) {
 add_filter( 'http_request_args', 'allow_unsafe_urls' );
 add_filter('https_ssl_verify', '__return_false');
 ```
+
+Once the lines above have been added, the webhooks can be created with the following URL:
+`https://localhost:44324/api/webhooks/incoming/genericjson/z?code=80ad19e357b01a04fe767067df7cd31b96a844e1`
+
+and secret:
+`i=1388a6b0d05eca2237f10e4a4641260b0a08f3a5`
+
+with WP REST API Integration v3 and Status = Active:
+
+- Go to WooCommerce -> Settings -> Advanced -> Webhooks -> Add WebHook ->
+    - CustomerCreatedHook ->
+        - Topic Customer Created
+    - OrderCreatedHook ->
+        - Topic: Order Created
