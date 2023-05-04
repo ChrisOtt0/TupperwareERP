@@ -26,9 +26,9 @@ namespace WebApplication1WebHook.Controllers
         
         public async Task<ActionResult> CreateCustomer(int customerNo = 10, string customerName = "")
         {
-            ConsultantService dynamicsFacade = new ConsultantService();
+            //ConsultantService dynamicsFacade = new ConsultantService();
             //await dynamicsFacade.CreateCustomer("Carlos", "carlos@easv.dk");
-            await dynamicsFacade.InsertData("Carlos", "carlos@easv.dk");
+            //await dynamicsFacade.InsertData("Carlos", "carlos@easv.dk");
 
             //await TestCall();
 
