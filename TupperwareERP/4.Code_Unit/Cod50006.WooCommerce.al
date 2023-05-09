@@ -43,6 +43,31 @@ codeunit 50006 WooCommerce
 
     end;
 
+    procedure UpdateStockQuantity(WooId: Integer; Stock: Integer): Boolean
+    var
+        Request: HttpRequestMessage;
+        Response: HttpResponseMessage;
+        DataJson: JsonObject;
+        Token: JsonToken;
+        Body: Text;
+        Url: Text;
+    begin
+        SetAuth();
+        Url := 'https://localhost:81/wordpress/wp-json/wc/v3/products/' + Format(WooId);
+
+        DataJson.Add('stock_quantity', Stock);
+        DataJson.WriteTo(Body);
+
+        Message(Url);
+        Message(Body);
+        CreateHttpRequest('PUT', Url, Body, Request);
+
+        if Client.Send(Request, Response) then
+            exit(true)
+        else
+            exit(false);
+    end;
+
     procedure ExportProduct(Name: Text[50]; Price: Decimal; Description: Text[100]; Stock: Integer) WooId: Integer
     var
         Request: HttpRequestMessage;
@@ -67,6 +92,8 @@ codeunit 50006 WooCommerce
         if Client.Send(Request, Response) then begin
             ResponseJson := GetBodyAsJsonObject(Response);
         end;
+
+        Message(Format(ResponseJson));
 
         if not ResponseJson.Contains('id') then exit(0);
         ResponseJson.Get('id', Token);
@@ -112,11 +139,13 @@ codeunit 50006 WooCommerce
 
     local procedure SetAuth()
     begin
-        if not (Client.DefaultRequestHeaders.Contains('User-Agent')) then
+        if not (Client.DefaultRequestHeaders.Contains('User-Agent')) then begin
             Client.DefaultRequestHeaders.Add('User-Agent', 'Dynamics 365');
+        end;
 
-        if not (Client.DefaultRequestHeaders.Contains('Authorize')) then
+        if not (Client.DefaultRequestHeaders.Contains('Authorize')) then begin
             Client.DefaultRequestHeaders.Add('Authorization', CreateAuthString());
+        end;
     end;
 
     local procedure CreateAuthString() AuthString: Text

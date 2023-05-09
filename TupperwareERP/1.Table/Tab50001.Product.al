@@ -129,4 +129,16 @@ table 50001 Product
             NoSeriesMgt.InitSeries(ProductSetup."Product Nos", xRec."No. Series", 0D, "No", "No. Series");
         end;
     end;
+
+    trigger OnModify()
+    var
+        Unit: Codeunit WooCommerce;
+    begin
+        if not (xRec."Inventory Quantity" = Rec."Inventory Quantity") then begin
+            if Unit.UpdateStockQuantity(Rec."Woo Id", Rec."Inventory Quantity") then
+                Message('Successfully updated stock.')
+            else
+                Message('Updating stock failed.');
+        end;
+    end;
 }
