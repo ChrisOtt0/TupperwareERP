@@ -49,9 +49,27 @@ page 50002 ProductList
 
     actions
     {
-        area(processing)
+        area(Processing)
         {
-            // Actions goes here
+            action("Open Product card")
+            {
+                RunObject = page "ProductCard";
+                RunPageLink = "No" = FIELD("No");
+                Promoted = false;
+                Image = Card;
+            }
+
+            action("Setup Product No")
+            {
+                Image = Setup;
+
+                trigger OnAction()
+                var
+                    ProductSetup: Codeunit 50001;
+                begin
+                    ProductSetup.NumProductSetup();
+                end;
+            }
         }
     }
 }

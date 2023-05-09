@@ -41,4 +41,29 @@ page 50000 CustomerList
             }
         }
     }
+    actions
+    {
+        area(Processing)
+        {
+            action("Open Customer card")
+            {
+                RunObject = page "CustomerCard";
+                RunPageLink = "No" = FIELD("No");
+                Promoted = false;
+                Image = Card;
+            }
+
+            action("Setup Customer No")
+            {
+                Image = Setup;
+
+                trigger OnAction()
+                var
+                    CustomerSetup: Codeunit 50000;
+                begin
+                    CustomerSetup.NumCustomerSetup();
+                end;
+            }
+        }
+    }
 }

@@ -14,7 +14,6 @@ codeunit 50004 OrdersManagement
         Orders."Customer" := Customer;
         Orders."Order Date" := "Order Date";
         Orders."Order Status" := "Order Status";
-        Orders."Shipping Method" := "Shipping Method";
         Orders."Order Notes" := "Order Notes";
         Orders."Product" := Product;
 

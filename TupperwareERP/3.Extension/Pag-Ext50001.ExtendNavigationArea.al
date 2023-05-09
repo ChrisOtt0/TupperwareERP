@@ -17,6 +17,16 @@ pageextension 50001 ExtendNavigationArea extends "Order Processor Role Center"
                     RunObject = Page "ProductList";
                     ApplicationArea = All;
                 }
+                action("Orders List")
+                {
+                    RunObject = Page "OrdersList";
+                    ApplicationArea = All;
+                }
+                action("Product Chart")
+                {
+                    RunObject = Page "Chart";
+                    ApplicationArea = All;
+                }
                 action("Customer Setup")
                 {
                     RunObject = Page "CustomerSetup";
@@ -25,6 +35,11 @@ pageextension 50001 ExtendNavigationArea extends "Order Processor Role Center"
                 action("Product Setup")
                 {
                     RunObject = Page "ProductSetup";
+                    ApplicationArea = All;
+                }
+                action("Order Setup")
+                {
+                    RunObject = Page "OrdersSetup";
                     ApplicationArea = All;
                 }
             }
