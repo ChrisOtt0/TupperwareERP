@@ -47,12 +47,6 @@ page 50006 OrdersList
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Order Day field.';
                 }
-                field("Shipping Method"; Rec."Shipping Method")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Shipping Method field.';
-                }
-
                 field("Order Status"; Rec."Order Status")
                 {
                     ApplicationArea = All;

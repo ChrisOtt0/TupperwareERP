@@ -35,13 +35,6 @@ table 50004 Orders
             DataClassification = ToBeClassified;
             OptionMembers = "Pending","Shipped","Invoiced","Cancelled";
         }
-
-        field(7; "Shipping Method"; Option)
-        {
-            Caption = 'Shipping Method';
-            DataClassification = ToBeClassified;
-            OptionMembers = "PostNord","GLS","DAO","Bring";
-        }
         field(8; "Order Notes"; Text[100])
         {
             Caption = 'Order Notes';

@@ -53,11 +53,6 @@ page 50007 OrdersCard
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Order Day field.';
                 }
-                field("Shipping Method"; Rec."Shipping Method")
-                {
-                    ApplicationArea = All;
-                    ToolTip = 'Specifies the value of the Shipping Method field.';
-                }
             }
         }
     }
