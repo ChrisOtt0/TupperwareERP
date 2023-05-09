@@ -50,6 +50,12 @@ page 50003 ProductCard
         area(processing)
         {
             // Actions goes here
+            action("Export to WooCommerce")
+            {
+                ApplicationArea = All;
+
+
+            }
         }
     }
 
