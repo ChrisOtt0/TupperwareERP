@@ -98,7 +98,11 @@ table 50001 Product
             FieldClass = FlowField;
             CalcFormula = count(Orders where("Product" = field(No), "Order Week" = const(6))); // We're using a fixed week as we can't have dates after february
         }
-
+        field(17; "Woo Id"; Integer)
+        {
+            Caption = 'WooCommerce ID';
+            DataClassification = ToBeClassified;
+        }
         field(100; "No. Series"; Code[20])
         {
             Caption = 'No. Series';

@@ -42,6 +42,11 @@ page 50003 ProductCard
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Price field.';
                 }
+                field("Woo Id"; Rec."Woo Id")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Woo ID field.';
+                }
             }
         }
     }
@@ -54,7 +59,14 @@ page 50003 ProductCard
             {
                 ApplicationArea = All;
 
-
+                trigger OnAction()
+                var
+                    unit: Codeunit WooCommerce;
+                    WooId: Integer;
+                begin
+                    WooId := unit.ExportProduct(Rec.Name, Rec.Price, Rec.Description, Rec."Inventory Quantity");
+                    Rec."Woo Id" := WooId;
+                end;
             }
         }
     }
