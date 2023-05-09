@@ -24,5 +24,9 @@
     "allowDebugging": true,
     "allowDownloadingSource": false,
     "includeSourceInSymbolFile": false
-  }
+  },
+  "runtime": "10.0",
+  "features": [
+    "NoImplicitWith"
+  ]
 }

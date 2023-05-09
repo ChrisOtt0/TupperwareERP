@@ -12,7 +12,7 @@ page 50007 OrdersCard
             {
                 Caption = 'General';
 
-                field("Order No"; Rec."Order No")
+                field("No"; Rec."No")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Order No field.';
@@ -43,7 +43,16 @@ page 50007 OrdersCard
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Order Date field.';
                 }
-
+                field("Order Week"; Rec."Order Week")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Order Week field.';
+                }
+                field("Order Day"; Rec."Order Day")
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the value of the Order Day field.';
+                }
                 field("Shipping Method"; Rec."Shipping Method")
                 {
                     ApplicationArea = All;

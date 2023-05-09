@@ -30,6 +30,12 @@ table 50000 Customers
             Caption = 'Phone';
             DataClassification = ToBeClassified;
         }
+        field(100; "No. Series"; Code[20])
+        {
+            Caption = 'No. Series';
+            Editable = false;
+            TableRelation = "No. Series";
+        }
     }
     keys
     {
@@ -38,5 +44,17 @@ table 50000 Customers
             Clustered = true;
         }
     }
+    
+    trigger OnInsert()
+    var
+        CustomerSetup: Record "CustomerSetup";
+        NoSeriesMgt: Codeunit NoSeriesManagement;
+    begin
+        if "No" = '' then begin
+            CustomerSetup.get;
+            CustomerSetup.TestField("Customer Nos");
+            NoSeriesMgt.InitSeries(CustomerSetup."Customer Nos", xRec."No. Series", 0D, "No", "No. Series");
+        end;
+    end;
 
 }

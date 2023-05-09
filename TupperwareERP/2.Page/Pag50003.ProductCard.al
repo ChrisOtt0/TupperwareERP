@@ -45,7 +45,6 @@ page 50003 ProductCard
             }
         }
     }
-
     actions
     {
         area(processing)
@@ -53,4 +52,10 @@ page 50003 ProductCard
             // Actions goes here
         }
     }
+
+    // Set the week number 
+    trigger OnAfterGetRecord()
+    begin
+        Rec."Current Week" := Date2DWY(Today, 2);
+    end;
 }
