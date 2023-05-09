@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web;
+using WebApplication1WebHook.Services;
 
 namespace WebApplication1WebHook
 {
@@ -25,6 +26,8 @@ namespace WebApplication1WebHook
         {
             // Get JSON from WebHook
             JObject data = context.GetDataOrDefault<JObject>();
+            System.Diagnostics.Debug.WriteLine(data);
+            DebugService.Log(data);
 
             try { 
                 String topic = context.Request.Headers.GetValues("X-WC-Webhook-Topic").First();
@@ -38,10 +41,10 @@ namespace WebApplication1WebHook
                     case "customer.created": // currently used for frank's example 
 
                         // Fetch variables
-                        string name = dData.name;
-                        string lastName = dData.lastName;
+                        string name = dData.first_name;
+                        string lastName = dData.last_name;
                         string email = dData.email;
-                        string phone = dData.phone;
+                        string phone = dData.billing.phone;
 
                         CustomerService customerService = new CustomerService();
                         customerService.InsertCustomer(name, lastName, email, phone);
@@ -51,14 +54,22 @@ namespace WebApplication1WebHook
                     case "product.created":
 
                         ProductService productService = new ProductService();
-                        productService.InsertProduct(name, email);
+                        //productService.InsertProduct(name, email);
 
                         break;
 
                     case "order.created":
 
+                        // Fetch variables
+                        string customer = dData.billing.email;
+                        string date = dData.date_created;
+                        string status = dData.status;
+                        string shipping = dData.payment_method;
+                        string note = dData.customer_note;
+                        string product = ((dynamic)((JArray)dData.line_items)[0]).name;
+
                         OrderService orderService = new OrderService();
-                        orderService.InsertOrder(name, email);
+                        orderService.InsertOrder(customer, date, status, shipping, note, product);
 
                         break;
 

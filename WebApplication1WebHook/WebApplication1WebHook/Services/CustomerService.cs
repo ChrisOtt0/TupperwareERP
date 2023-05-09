@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using WebApplication1WebHook.Services;
 
 namespace WebApplication1WebHook
 {
@@ -16,14 +17,10 @@ namespace WebApplication1WebHook
             String pphone)
 
         {
-            //l/p
-            var _token = $"admin:Password";
-            var _tokenBase64 = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(_token));
-
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", TokenService.dynToken);
 
             var parameter = new Customer { 
                 name = pname, 
@@ -48,6 +45,7 @@ namespace WebApplication1WebHook
             if (response.IsSuccessStatusCode)
             {
                 data = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine("Success: " + data);
             }
             else
             {

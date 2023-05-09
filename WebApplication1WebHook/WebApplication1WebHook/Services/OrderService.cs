@@ -4,28 +4,33 @@ using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
+using WebApplication1WebHook.Services;
 
 namespace WebApplication1WebHook
 {
     public class OrderService
     {
         public async Task InsertOrder(
-            String pname, 
-            String pemail)
+            String pcustomer, 
+            String pdate,
+            String pstatus,
+            String pshipping,
+            String pnote,
+            String pproduct)
 
         {
-            //l/p
-            var _token = $"admin:Password";
-            var _tokenBase64 = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(_token));
-
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", TokenService.dynToken);
 
             var parameter = new Order { 
-                name = pname, 
-                mail = pemail 
+                customer = pcustomer,
+                date = pdate,
+                status = pstatus,
+                shipping = pshipping,
+                note = pnote,
+                product = pproduct
             };
 
             String jsonData = JsonConvert.SerializeObject(parameter);
