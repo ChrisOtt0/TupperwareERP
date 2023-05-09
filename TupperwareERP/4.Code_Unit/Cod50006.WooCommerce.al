@@ -58,8 +58,6 @@ codeunit 50006 WooCommerce
         DataJson.Add('stock_quantity', Stock);
         DataJson.WriteTo(Body);
 
-        Message(Url);
-        Message(Body);
         CreateHttpRequest('PUT', Url, Body, Request);
 
         if Client.Send(Request, Response) then
@@ -98,26 +96,6 @@ codeunit 50006 WooCommerce
         if not ResponseJson.Contains('id') then exit(0);
         ResponseJson.Get('id', Token);
         WooId := Token.AsValue().AsInteger();
-    end;
-
-    procedure UpdateStock(Id: Integer; Stock: Integer) JsonBody: JsonObject
-    var
-        Request: HttpRequestMessage;
-        Response: HttpResponseMessage;
-        Body: Text;
-        DataJson: JsonObject;
-        Url: Text;
-    begin
-        Url := 'http://localhost:81/wordpress/wp-json/wc/v3/products/' + Format(Id);
-
-        DataJson.Add('stock_quantity', Stock);
-        DataJson.WriteTo(Body);
-
-        CreateHttpRequest('PUT', Url, Body, Request);
-
-        if Client.Send(Request, Response) then begin
-            JsonBody := GetBodyAsJsonObject(Response);
-        end;
     end;
 
     local procedure CreateHttpRequest(Method: Text; Url: Text; Body: Text; Request: HttpRequestMessage)
