@@ -7,15 +7,20 @@ codeunit 50004 OrdersManagement
 
     end;
 
-    procedure InsertOrder(Customer: Text[50]; "Order Date": Date; "Order Status": Option; "Shipping Method": Option; "Order Notes": Text[100]; Product: Text[50]): Boolean
+    procedure InsertOrder(Customer: Text[100]; OrderDate: Text; OrderStatus: Text; OrderNotes: Text[100]; Product: Integer): Boolean
     var
         Orders: Record Orders;
+        Products: Record Product;
+        ProductNo: Code[20];
     begin
         Orders."Customer" := Customer;
-        Orders."Order Date" := "Order Date";
-        Orders."Order Status" := "Order Status";
-        Orders."Order Notes" := "Order Notes";
-        Orders."Product" := Product;
+        Evaluate(Orders."Order Date", OrderDate);
+        Evaluate(Orders."Order Status", OrderStatus);
+        Orders."Order Notes" := OrderNotes;
+
+        Products.SetFilter(Products."Woo Id", '%1', Product);
+        if Products.FindFirst() then
+            Orders."Product" := Products.No;
 
         if Orders.Insert then begin
             Message('Order inserted');

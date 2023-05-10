@@ -14,9 +14,8 @@ namespace WebApplication1WebHook
             String pcustomer, 
             String pdate,
             String pstatus,
-            String pshipping,
             String pnote,
-            String pproduct)
+            int pproduct)
 
         {
             HttpClient client = new HttpClient();
@@ -26,10 +25,9 @@ namespace WebApplication1WebHook
 
             var parameter = new Order { 
                 customer = pcustomer,
-                date = pdate,
-                status = pstatus,
-                shipping = pshipping,
-                note = pnote,
+                orderDate = pdate,
+                orderStatus = pstatus,
+                orderNotes = pnote,
                 product = pproduct
             };
 

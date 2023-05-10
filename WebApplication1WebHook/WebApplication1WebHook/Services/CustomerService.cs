@@ -33,12 +33,12 @@ namespace WebApplication1WebHook
             var payload = new CustomerPayload { customer = jsonData };
             var payloadJSON = JsonConvert.SerializeObject(payload);
 
-            var inputData = new StringContent(payloadJSON, Encoding.Unicode, "application/json");
+            var inputData = new StringContent(jsonData, Encoding.Unicode, "application/json");
 
             System.Diagnostics.Debug.WriteLine("json: " + await inputData.ReadAsStringAsync());
 
             // UPDATE THIS
-            HttpResponseMessage response = await client.PostAsync("http://test:7048/BC/ODataV4/WooCommerce_InsertCustomer?company=CRONUS%20Danmark%20A%2FS", inputData);
+            HttpResponseMessage response = await client.PostAsync("http://test:7048/BC/ODataV4/CustomerManagement_InsertCustomer?company=CRONUS%20Danmark%20A%2FS", inputData);
 
             string data = "";
 

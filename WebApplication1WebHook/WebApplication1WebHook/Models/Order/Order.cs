@@ -8,19 +8,16 @@ namespace WebApplication1WebHook
         [JsonProperty("customer")]
         public String customer { get; set; }
 
-        [JsonProperty("date")]
-        public String date { get; set; }
+        [JsonProperty("orderDate")]
+        public String orderDate { get; set; }
 
-        [JsonProperty("status")]
-        public String status { get; set; }
+        [JsonProperty("orderStatus")]
+        public String orderStatus { get; set; }
 
-        [JsonProperty("shipping")]
-        public String shipping { get; set; }
-
-        [JsonProperty("note")]
-        public String note { get; set; }
+        [JsonProperty("orderNotes")]
+        public String orderNotes { get; set; }
 
         [JsonProperty("product")]
-        public String product { get; set; }
+        public int product { get; set; }
     }
 }

@@ -1,48 +1,5 @@
 codeunit 50006 WooCommerce
 {
-    // Still needs testing
-    procedure InsertCustomer(Customer: JsonObject): Boolean
-    var
-        CustomerMan: Codeunit CustomerManagement;
-        Token: JsonToken;
-        Name: Text[50];
-        LastName: Text[50];
-        Email: Text[100];
-        Phone: Text[20];
-    begin
-        if not Customer.Contains('name') then exit(false);
-        if not Customer.Contains('lastName') then exit(false);
-        if not Customer.Contains('email') then exit(false);
-        if not Customer.Contains('phone') then exit(false);
-
-        Customer.Get('name', Token);
-        Name := Token.AsValue().AsText();
-
-        Customer.Get('lastName', Token);
-        LastName := Token.AsValue().AsText();
-
-        Customer.Get('email', Token);
-        Email := Token.AsValue().AsText();
-
-        Customer.Get('phone', Token);
-        Phone := Token.AsValue().AsText();
-
-        if CustomerMan.InsertCustomer(Name, LastName, Email, Phone) then
-            exit(true)
-        else
-            exit(false);
-    end;
-
-    // Needs to have some stuff cleared up
-    procedure InsertOrder(Object: JsonObject): Boolean
-    var
-        OrderMan: Codeunit OrdersManagement;
-        Token: JsonToken;
-
-    begin
-
-    end;
-
     procedure UpdateStockQuantity(WooId: Integer; Stock: Integer): Boolean
     var
         Request: HttpRequestMessage;
@@ -77,7 +34,7 @@ codeunit 50006 WooCommerce
         Url: Text;
     begin
         SetAuth();
-        Url := 'http://localhost:81/wordpress/wp-json/wc/v3/products';
+        Url := 'http://192.168.1.254:81/wordpress/wp-json/wc/v3/products';
 
         DataJson.Add('name', Name);
         DataJson.Add('regular_price', Format(Price));
@@ -88,6 +45,7 @@ codeunit 50006 WooCommerce
         CreateHttpRequest('POST', Url, Body, Request);
 
         if Client.Send(Request, Response) then begin
+            Message('Success Sending');
             ResponseJson := GetBodyAsJsonObject(Response);
         end;
 
