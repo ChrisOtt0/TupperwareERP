@@ -43,7 +43,7 @@ namespace WebApplication1WebHook
             System.Diagnostics.Debug.WriteLine("json: " + await inputData.ReadAsStringAsync());
 
             // UPDATE THIS
-            HttpResponseMessage response = await client.PostAsync("http://test:7048/BC/ODataV4/WooService_AddNewConsultant?company=CRONUS%20Danmark%20A%2FS", inputData);
+            HttpResponseMessage response = await client.PostAsync("http://test:7048/BC/ODataV4/WooCommerce_InsertOrder?company=CRONUS%20Danmark%20A%2FS", inputData);
 
             string data = "";
 

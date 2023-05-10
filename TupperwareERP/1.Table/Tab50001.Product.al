@@ -98,7 +98,11 @@ table 50001 Product
             FieldClass = FlowField;
             CalcFormula = count(Orders where("Product" = field(No), "Order Week" = const(6))); // We're using a fixed week as we can't have dates after february
         }
-
+        field(17; "Woo Id"; Integer)
+        {
+            Caption = 'WooCommerce ID';
+            DataClassification = ToBeClassified;
+        }
         field(100; "No. Series"; Code[20])
         {
             Caption = 'No. Series';
@@ -123,6 +127,18 @@ table 50001 Product
             ProductSetup.get;
             ProductSetup.TestField("Product Nos");
             NoSeriesMgt.InitSeries(ProductSetup."Product Nos", xRec."No. Series", 0D, "No", "No. Series");
+        end;
+    end;
+
+    trigger OnModify()
+    var
+        Unit: Codeunit WooCommerce;
+    begin
+        if not (xRec."Inventory Quantity" = Rec."Inventory Quantity") then begin
+            if Unit.UpdateStockQuantity(Rec."Woo Id", Rec."Inventory Quantity") then
+                Message('Successfully updated stock.')
+            else
+                Message('Updating stock failed.');
         end;
     end;
 }
