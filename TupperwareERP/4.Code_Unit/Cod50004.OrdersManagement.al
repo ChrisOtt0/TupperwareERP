@@ -12,6 +12,7 @@ codeunit 50004 OrdersManagement
         Orders: Record Orders;
         Products: Record Product;
         ProductNo: Code[20];
+        EmailUnit: Codeunit EmailUnit;
     begin
         Orders."Customer" := Customer;
         Evaluate(Orders."Order Date", OrderDate);
@@ -22,8 +23,9 @@ codeunit 50004 OrdersManagement
         if Products.FindFirst() then
             Orders."Product" := Products.No;
 
-        if Orders.Insert then begin
+        if Orders.Insert(true) then begin
             Message('Order inserted');
+            EmailUnit.SendConfirmation(Customer, Orders.No);
             exit(true);
         end
         else begin

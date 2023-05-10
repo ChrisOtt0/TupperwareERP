@@ -44,17 +44,20 @@ table 50000 Customers
             Clustered = true;
         }
     }
-    
+
     trigger OnInsert()
     var
         CustomerSetup: Record "CustomerSetup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        EmailUnit: Codeunit EmailUnit;
     begin
         if "No" = '' then begin
             CustomerSetup.get;
             CustomerSetup.TestField("Customer Nos");
             NoSeriesMgt.InitSeries(CustomerSetup."Customer Nos", xRec."No. Series", 0D, "No", "No. Series");
         end;
+
+        EmailUnit.SendWelcome(Rec.Mail);
     end;
 
 }

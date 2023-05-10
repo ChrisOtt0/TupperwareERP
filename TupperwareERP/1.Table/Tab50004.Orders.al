@@ -65,12 +65,15 @@ table 50004 Orders
     var
         OrdersSetup: Record "OrdersSetup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        EmailUnit: Codeunit EmailUnit;
     begin
         if "No" = '' then begin
             OrdersSetup.get;
             OrdersSetup.TestField("Order Nos");
             NoSeriesMgt.InitSeries(OrdersSetup."Order Nos", xRec."No. Series", 0D, "No", "No. Series");
         end;
+
+        EmailUnit.SendConfirmation(Rec.Customer, Rec.No);
     end;
 
     trigger OnModify()
