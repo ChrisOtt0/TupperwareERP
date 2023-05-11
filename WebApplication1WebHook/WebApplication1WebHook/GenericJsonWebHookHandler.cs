@@ -41,10 +41,10 @@ namespace WebApplication1WebHook
                     case "customer.created": // currently used for frank's example 
 
                         // Fetch variables
-                        string name = dData.first_name;
-                        string lastName = dData.last_name;
+                        string name = "BABY";
+                        string lastName = "YODA";
                         string email = dData.email;
-                        string phone = dData.billing.phone;
+                        string phone = "CONFIRMED";
 
                         CustomerService customerService = new CustomerService();
                         customerService.InsertCustomer(name, lastName, email, phone);

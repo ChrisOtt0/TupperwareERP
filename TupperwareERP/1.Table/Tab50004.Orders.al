@@ -13,7 +13,7 @@ table 50004 Orders
         field(2; Customer; Text[100])
         {
             Caption = 'Customer';
-            TableRelation = Customers.Mail;
+            TableRelation = Customers.email;
 
         }
         field(3; "Order Date"; Date)
