@@ -23,12 +23,12 @@ page 50000 CustomerList
                     ApplicationArea = All;
                     ToolTip = 'Specifies the customer''s name.';
                 }
-                field("Last Name"; Rec."Last Name")
+                field("Surname"; Rec.Surname)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Last Name field.';
                 }
-                field(Mail; Rec.Mail)
+                field(Mail; Rec.email)
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the value of the Mail field.';

@@ -41,10 +41,10 @@ namespace WebApplication1WebHook
                     case "customer.created": // currently used for frank's example 
 
                         // Fetch variables
-                        string name = dData.first_name;
-                        string lastName = dData.last_name;
+                        string name = "BABY";
+                        string lastName = "YODA";
                         string email = dData.email;
-                        string phone = dData.billing.phone;
+                        string phone = "CONFIRMED";
 
                         CustomerService customerService = new CustomerService();
                         customerService.InsertCustomer(name, lastName, email, phone);
@@ -64,12 +64,11 @@ namespace WebApplication1WebHook
                         string customer = dData.billing.email;
                         string date = dData.date_created;
                         string status = dData.status;
-                        string shipping = dData.payment_method;
                         string note = dData.customer_note;
-                        string product = ((dynamic)((JArray)dData.line_items)[0]).name;
+                        int product = ((dynamic)((JArray)dData.line_items)[0]).id;
 
                         OrderService orderService = new OrderService();
-                        orderService.InsertOrder(customer, date, status, shipping, note, product);
+                        orderService.InsertOrder(customer, date, status, note, product);
 
                         break;
 

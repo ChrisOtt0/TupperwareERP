@@ -10,10 +10,10 @@ table 50004 Orders
             Caption = 'No';
             DataClassification = ToBeClassified;
         }
-        field(2; Customer; Text[50])
+        field(2; Customer; Text[100])
         {
             Caption = 'Customer';
-            TableRelation = Customer."No.";
+            TableRelation = Customers.email;
 
         }
         field(3; "Order Date"; Date)
@@ -33,7 +33,7 @@ table 50004 Orders
         {
             Caption = 'Order Status';
             DataClassification = ToBeClassified;
-            OptionMembers = "Pending","Shipped","Invoiced","Cancelled";
+            OptionMembers = "Pending","Shipped","Invoiced","Cancelled","Processing";
         }
         field(8; "Order Notes"; Text[100])
         {
@@ -65,12 +65,15 @@ table 50004 Orders
     var
         OrdersSetup: Record "OrdersSetup";
         NoSeriesMgt: Codeunit NoSeriesManagement;
+        EmailUnit: Codeunit EmailUnit;
     begin
         if "No" = '' then begin
             OrdersSetup.get;
             OrdersSetup.TestField("Order Nos");
             NoSeriesMgt.InitSeries(OrdersSetup."Order Nos", xRec."No. Series", 0D, "No", "No. Series");
         end;
+
+        EmailUnit.SendConfirmation(Rec.Customer, Rec.No);
     end;
 
     trigger OnModify()

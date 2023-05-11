@@ -8,11 +8,11 @@ namespace WebApplication1WebHook
         [JsonProperty("name")]
         public String name { get; set; }
 
-        [JsonProperty("last Name")]
-        public String lastName { get; set; }
+        [JsonProperty("surname")]
+        public String surname { get; set; }
 
-        [JsonProperty("mail")]
-        public String mail { get; set; }
+        [JsonProperty("email")]
+        public String email { get; set; }
 
         [JsonProperty("phone")]
         public String phone { get; set; }
