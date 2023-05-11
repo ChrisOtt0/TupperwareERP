@@ -14,7 +14,6 @@ table 50004 Orders
         {
             Caption = 'Customer';
             TableRelation = Customers.email;
-
         }
         field(3; "Order Date"; Date)
         {

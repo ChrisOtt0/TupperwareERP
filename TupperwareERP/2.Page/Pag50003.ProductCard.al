@@ -71,9 +71,9 @@ page 50003 ProductCard
         }
     }
 
-    // Set the week number 
-    trigger OnAfterGetRecord()
-    begin
-        Rec."Current Week" := Date2DWY(Today, 2);
-    end;
+    // Set the week number but not when we have license restriction
+    // trigger OnAfterGetRecord()
+    // begin
+    //     Rec."Current Week" := Date2DWY(Today, 2);
+    // end;
 }

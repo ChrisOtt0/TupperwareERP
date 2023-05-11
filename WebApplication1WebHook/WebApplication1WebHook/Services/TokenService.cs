@@ -11,10 +11,10 @@ namespace WebApplication1WebHook.Services
         // Comment or uncomment as necessary
         public static string wootToken = System.Convert.ToBase64String(
             System.Text.Encoding.UTF8.GetBytes(
-                "ck_b7e5d613bbc0177f5ae40bbe79e536d0a965dc78:cs_517e7163762fd8063ecc8efaedda6b0c84ddbba8"));
+                "ck_2fa6d8b5517c39e24ac1d3f5b1915f780d6ccebb:cs_16fb811c727f694583684f85cb0f0281bf0195bb"));
 
         public static string dynToken = System.Convert.ToBase64String(
             System.Text.Encoding.UTF8.GetBytes(
-                "admin:admin"));
+                "admin:Password"));
     }
 }

@@ -27,7 +27,6 @@ namespace WebApplication1WebHook
             // Get JSON from WebHook
             JObject data = context.GetDataOrDefault<JObject>();
             System.Diagnostics.Debug.WriteLine(data);
-            DebugService.Log(data);
 
             try { 
                 String topic = context.Request.Headers.GetValues("X-WC-Webhook-Topic").First();
@@ -51,30 +50,19 @@ namespace WebApplication1WebHook
 
                         break;
 
-                    case "product.created":
-
-                        ProductService productService = new ProductService();
-                        //productService.InsertProduct(name, email);
-
-                        break;
-
                     case "order.created":
 
                         // Fetch variables
                         string customer = dData.billing.email;
-                        string date = dData.date_created;
+                        string date = "08/02/2023";
                         string status = dData.status;
                         string note = dData.customer_note;
-                        int product = ((dynamic)((JArray)dData.line_items)[0]).id;
+                        int product = ((dynamic)((JArray)dData.line_items)[0]).product_id;
 
                         OrderService orderService = new OrderService();
                         orderService.InsertOrder(customer, date, status, note, product);
 
                         break;
-
-                    case "stock.changed": // i've no idea if that's the real name 
-                        break;
-
                 }
             }
             catch (Exception ex) 

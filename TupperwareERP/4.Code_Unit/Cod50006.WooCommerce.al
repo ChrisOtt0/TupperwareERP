@@ -10,7 +10,7 @@ codeunit 50006 WooCommerce
         Url: Text;
     begin
         SetAuth();
-        Url := 'https://localhost:81/wordpress/wp-json/wc/v3/products/' + Format(WooId);
+        Url := 'http://10.0.0.3:81/wordpress/wp-json/wc/v3/products/' + Format(WooId);
 
         DataJson.Add('stock_quantity', Stock);
         DataJson.WriteTo(Body);
@@ -34,13 +34,15 @@ codeunit 50006 WooCommerce
         Url: Text;
     begin
         SetAuth();
-        Url := 'http://192.168.1.254:81/wordpress/wp-json/wc/v3/products';
+        Url := 'http://10.0.0.3:81/wordpress/wp-json/wc/v3/products/';
 
         DataJson.Add('name', Name);
         DataJson.Add('regular_price', Format(Price));
         DataJson.Add('description', Description);
         DataJson.Add('stock_quantity', Stock);
         DataJson.WriteTo(Body);
+
+        Message(Body);
 
         CreateHttpRequest('POST', Url, Body, Request);
 
@@ -105,6 +107,6 @@ codeunit 50006 WooCommerce
         Client: HttpClient;
 
         // Comment or uncomment as needed.
-        Ck: Label 'ck_b7e5d613bbc0177f5ae40bbe79e536d0a965dc78';
-        Cs: Label 'cs_517e7163762fd8063ecc8efaedda6b0c84ddbba8';
+        Ck: Label 'ck_2fa6d8b5517c39e24ac1d3f5b1915f780d6ccebb';
+        Cs: Label 'cs_16fb811c727f694583684f85cb0f0281bf0195bb';
 }

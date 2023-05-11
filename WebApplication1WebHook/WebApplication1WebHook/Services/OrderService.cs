@@ -18,10 +18,13 @@ namespace WebApplication1WebHook
             int pproduct)
 
         {
+            var _token = $"admin:Password";
+            var _tokenBase64 = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(_token));
+
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", TokenService.dynToken);
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _tokenBase64);
 
             var parameter = new Order { 
                 customer = pcustomer,
@@ -33,15 +36,13 @@ namespace WebApplication1WebHook
 
             String jsonData = JsonConvert.SerializeObject(parameter);
 
-            var payload = new OrderPayload { order = jsonData };
-            var payloadJSON = JsonConvert.SerializeObject(payload);
+            var inputData = new StringContent(jsonData, Encoding.Unicode, "application/json");
 
-            var inputData = new StringContent(payloadJSON, Encoding.Unicode, "application/json");
-
+            System.Diagnostics.Debug.WriteLine("SERVICE CALLED");
             System.Diagnostics.Debug.WriteLine("json: " + await inputData.ReadAsStringAsync());
 
             // UPDATE THIS
-            HttpResponseMessage response = await client.PostAsync("http://test:7048/BC/ODataV4/WooCommerce_InsertOrder?company=CRONUS%20Danmark%20A%2FS", inputData);
+            HttpResponseMessage response = await client.PostAsync("http://172.21.62.1:7048/BC/ODataV4/OrdersManagement_InsertOrder?company=CRONUS%20Danmark%20A%2FS", inputData);
 
             string data = "";
 

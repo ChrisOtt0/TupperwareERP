@@ -45,10 +45,10 @@ table 50001 Product
         {
             Caption = 'Current Week, might be a hack';
             DataClassification = ToBeClassified;
-            trigger OnLookup()
-            begin
-                "Current Week" := Date2DWY(today, 2);
-            end;
+            // trigger OnLookup() // NOT WITH FIXED MONTHS IN OUR LICENSE
+            // begin
+            //     "Current Week" := Date2DWY(today, 2);
+            // end;
         }
         field(9; "Mon sales"; Integer)
         {

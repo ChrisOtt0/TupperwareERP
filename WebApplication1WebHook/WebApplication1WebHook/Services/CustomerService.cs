@@ -17,7 +17,7 @@ namespace WebApplication1WebHook
             String pphone)
 
         {
-            var _token = $"admin:admin";
+            var _token = $"admin:Password";
             var _tokenBase64 = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(_token));
 
             HttpClient client = new HttpClient();
@@ -36,8 +36,6 @@ namespace WebApplication1WebHook
             String jsonData = JsonConvert.SerializeObject(parameter);
 
             var inputData = new StringContent(jsonData, Encoding.Unicode, "application/json");
-
-            System.Diagnostics.Debug.WriteLine("SERVICE IS CALLED");
 
             System.Diagnostics.Debug.WriteLine("json: " + await inputData.ReadAsStringAsync());
 
